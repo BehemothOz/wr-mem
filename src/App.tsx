@@ -22,17 +22,13 @@ const About = () => {
     );
 };
 
-function App() {
+const App = () => {
     return (
         <RouterProvider>
-            <Route path={routes.home.path}>
-                <Home />
-            </Route>
-            <Route path={routes.about.path}>
-                <About />
-            </Route>
+            <Route path={routes.home.path} component={<Home />} />
+            <Route path={routes.about.path} component={<About />} />
         </RouterProvider>
     );
-}
+};
 
 export default App;
