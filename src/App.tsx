@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { RouterProvider } from "./router/Router";
+import { Route } from "./router/Route";
+import { Link } from "./router/Link";
+
+import { routes } from "./router/routes";
+
+const Home = () => {
+  console.count('Home')
+    return (
+        <>
+            <p>Homepage</p>
+            <Link to={routes.about.path}>Go to about</Link>
+        </>
+    );
+};
+
+const About = () => {
+  console.count('About')
+    return (
+        <>
+            <p>About</p>
+            <Link to={routes.home.path}>Go to home</Link>
+        </>
+    );
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <RouterProvider>
+            <div style={{ width: 400, backgroundColor: "lightgreen" }}>
+                <Route path={routes.home.path}>
+                    <Home />
+                </Route>
+                <Route path={routes.about.path}>
+                    <About />
+                </Route>
+            </div>
+        </RouterProvider>
+    );
 }
 
 export default App;
