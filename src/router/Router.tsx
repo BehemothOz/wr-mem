@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useLayoutEffect, useMemo, useState } from "react";
-import { createBrowserHistory, Location, State } from "history";
-import { locationToRoute } from "./utils";
+import React, { createContext, useContext, useLayoutEffect, useState } from 'react';
+import { createBrowserHistory, Location, State } from 'history';
+import { locationToRoute } from './utils';
 
 type Props = {
     children: React.ReactNode;
@@ -8,14 +8,13 @@ type Props = {
 
 const history = createBrowserHistory();
 
-export const RouterContext = createContext({
+const RouterContext = createContext({
     route: locationToRoute(history),
 });
 
 const RouterProvider = ({ children }: Props) => {
-    console.log(children)
-    const [route, setRoute] = useState(locationToRoute(history));
-    console.log('RouterProvider', route)
+    const [route, setRoute] = useState(() => locationToRoute(history));
+
     const handleRouteChange = (location: { location: Location<State> }) => {
         const route = locationToRoute(location);
         setRoute(route);
@@ -28,15 +27,7 @@ const RouterProvider = ({ children }: Props) => {
         };
     }, []);
 
-    const memoRoute = useMemo(() => ({
-        route
-    }), [route]);
-
-    return (
-        <RouterContext.Provider value={memoRoute}>
-            {children}
-        </RouterContext.Provider>
-    );
+    return <RouterContext.Provider value={{ route }}>{children}</RouterContext.Provider>;
 };
 
 const useRouter = () => useContext(RouterContext);

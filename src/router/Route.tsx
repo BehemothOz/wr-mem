@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
-import { RouterContext } from "./Router";
+import { useRouter } from './Router';
 
 type Props = {
+    path: string;
     children: React.ReactNode;
-    path?: string;
 };
 
-export function Route({ path, children }: Props) {
-    const { route } = useContext(RouterContext);
+export const Route = ({ path, children }: Props) => {
+    const { route } = useRouter();
 
     // if path doesn't match the current route path
     if (route.path !== path) return null;
 
     return <>{children}</>;
-}
+};

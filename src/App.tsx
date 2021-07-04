@@ -1,13 +1,10 @@
-import "./App.css";
+import { RouterProvider } from './router/Router';
+import { Route } from './router/Route';
+import { Link } from './router/Link';
 
-import { RouterProvider } from "./router/Router";
-import { Route } from "./router/Route";
-import { Link } from "./router/Link";
-
-import { routes } from "./router/routes";
+import { routes } from './routes';
 
 const Home = () => {
-  console.count('Home')
     return (
         <>
             <p>Homepage</p>
@@ -17,7 +14,6 @@ const Home = () => {
 };
 
 const About = () => {
-  console.count('About')
     return (
         <>
             <p>About</p>
@@ -29,14 +25,12 @@ const About = () => {
 function App() {
     return (
         <RouterProvider>
-            <div style={{ width: 400, backgroundColor: "lightgreen" }}>
-                <Route path={routes.home.path}>
-                    <Home />
-                </Route>
-                <Route path={routes.about.path}>
-                    <About />
-                </Route>
-            </div>
+            <Route path={routes.home.path}>
+                <Home />
+            </Route>
+            <Route path={routes.about.path}>
+                <About />
+            </Route>
         </RouterProvider>
     );
 }
