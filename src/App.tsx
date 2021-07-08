@@ -7,7 +7,7 @@ import { routes } from './routes';
 const Home = () => {
     return (
         <>
-            <p>Homepage</p>
+            <p className="text-blue-500">Homepage</p>
             <Link to={routes.about.path}>Go to about</Link>
         </>
     );
@@ -16,7 +16,7 @@ const Home = () => {
 const About = () => {
     return (
         <>
-            <p>About</p>
+            <p className="text-red-500">About</p>
             <Link to={routes.home.path}>Go to home</Link>
         </>
     );
