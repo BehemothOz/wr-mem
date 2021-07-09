@@ -1,17 +1,22 @@
-import { RouterProvider } from './router/Router';
-import { Route } from './router/Route';
+import { lazy, Suspense } from 'react';
+// import { RouterProvider } from './router/Router';
+// import { Route } from './router/Route';
+// import { routes } from './routes';
 
-import { Home } from './pages/Home';
-import { About } from './pages/About';
+const Some = lazy(() => import('.Some').then(module => ({ default: module.Some })));
+// const About = lazy(() => import('./pages/About'));
 
-import { routes } from './routes';
+console.log(Home)
 
 const App = () => {
     return (
-        <RouterProvider>
-            <Route path={routes.home.path} component={<Home />} />
-            <Route path={routes.about.path} component={<About />} />
-        </RouterProvider>
+            <Suspense fallback={<div>Загрузка...</div>}>
+                <Home />
+                {/* <RouterProvider>
+                    <Route path={routes.home.path} component={<Home />} />
+                    <Route path={routes.about.path} component={<About />} />
+                </RouterProvider> */}
+            </Suspense>
     );
 };
 
