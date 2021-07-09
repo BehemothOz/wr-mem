@@ -2,9 +2,13 @@
 import { SvgIcon } from './SvgIcon';
 
 const createSvgIcon = (path) => {
-  return (
-    <SvgIcon path={path} />
-  )
+  const Icon = props => {
+    return (
+      <SvgIcon path={path} {...props} />
+    )
+  }
+
+  return Icon;
 }
 
 export const Settings = createSvgIcon(
