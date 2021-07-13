@@ -1,10 +1,15 @@
 import { AppBar } from '../AppBar';
+import { Navigation } from '../Navigation';
 
 export const Layout = props => {
     return (
-        <div>
-            <AppBar as="header">OMG!</AppBar>
-            {props.children}
-        </div>
+        <>
+            <AppBar as="header">
+                <Navigation />
+            </AppBar>
+            <main>
+                {props.children}
+            </main>
+        </>
     );
 };

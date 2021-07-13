@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Layout } from './components/Layout';
 import { RouterProvider } from './router/Router';
 import { Route } from './router/Route';
 import { routes } from './routes';
@@ -11,10 +12,12 @@ console.log(Home);
 const App = () => {
     return (
         <RouterProvider>
-            <Suspense fallback={<div>Загрузка...</div>}>
-                <Route path={routes.home.path} component={<Home />} />
-                <Route path={routes.about.path} component={<About />} />
-            </Suspense>
+            <Layout>
+                <Suspense fallback={<div>Загрузка...</div>}>
+                    <Route path={routes.home.path} component={<Home />} />
+                    <Route path={routes.about.path} component={<About />} />
+                </Suspense>
+            </Layout>
         </RouterProvider>
     );
 };
