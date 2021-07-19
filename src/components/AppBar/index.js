@@ -5,9 +5,11 @@ export const AppBar = props => {
 
     const Tag = as;
 
-    return(
-        <Tag className={cn('p-3 text-white bg-red-500', className)}>
-            {children}
-        </Tag>
-    )
-}
+    return (
+        <>
+            <Tag className={cn('sticky top-0 w-full h-14 p-3 text-white bg-red-500', className)}>
+                {children}
+            </Tag>
+        </>
+    );
+};
