@@ -21,7 +21,7 @@ export const Link = ({ to, children, onClick, ...props }: Props) => {
 
     return (
         <>
-            <a {...props} onClick={handleClick}>
+            <a href={to} onClick={handleClick} {...props}>
                 {children}
             </a>
         </>
